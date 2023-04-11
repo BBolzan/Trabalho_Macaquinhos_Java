@@ -1,25 +1,23 @@
-import java.util.LinkedList;
-
 public class GerenciadorRodadas {
 
-    public void gerenciadorDeRodadas(int rodadas, LinkedList<Macaco> listaMacacos) {
+    public void gerenciadorDeRodadas(int rodadas, Macaco[] listaMacacos) {
         for (int i = 0; i < rodadas; i++) {
-            for (int j = 0; j < listaMacacos.size(); j++) {
-                listaMacacos.get(j).arremessaCoco(listaMacacos);
+            for (int j = 0; j < listaMacacos.length; j++) {
+                listaMacacos[j].arremessaCoco(listaMacacos);
             }
         }
     }
 
     
-    public String macacoGanhador(LinkedList<Macaco> listaMacacos) {
-        Macaco aux = listaMacacos.get(0);
+    public String macacoGanhador(Macaco[] listaMacacos) {
+        Macaco aux = listaMacacos[0];
         int indexGanhador = 0;
-        for (int i = 0; i < listaMacacos.size(); i++) {
-            if (listaMacacos.get(i).quantidadeCocosTotais() > aux.quantidadeCocosTotais()){
-                aux = listaMacacos.get(i);
+        for (int i = 0; i < listaMacacos.length; i++) {
+            if (listaMacacos[i].quantidadeCocosTotais() > aux.quantidadeCocosTotais()){
+                aux = listaMacacos[i];
                 indexGanhador = i;
             }
         }
-        return "O macaco ganhador é: " + indexGanhador + " com a quantidade " + listaMacacos.get(indexGanhador).quantidadeCocosTotais() + " de Cocos";
+        return "O macaco ganhador é: " + indexGanhador + " com a quantidade " + listaMacacos[indexGanhador].quantidadeCocosTotais() + " de Cocos";
     }
 }

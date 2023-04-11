@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 public class Macaco {
     private int ataqueImpar;
     private int ataquePar;
@@ -26,9 +24,9 @@ public class Macaco {
         return total;
     }
     
-    public void arremessaCoco(LinkedList<Macaco> listaMacacos) {
-        listaMacacos.get(ataqueImpar).setCocosImpares(cocosImpares);
-        listaMacacos.get(ataquePar).setCocosPares(cocosPares);
+    public void arremessaCoco(Macaco[] listaMacacos) {
+        listaMacacos[ataqueImpar].setCocosImpares(cocosImpares);
+        listaMacacos[ataquePar].setCocosPares(cocosPares);
         this.cocosImpares = 0;
         this.cocosPares = 0;
     }
