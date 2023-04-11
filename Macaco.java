@@ -1,31 +1,35 @@
 import java.util.LinkedList;
-import java.util.List;
 
 public class Macaco {
-    public List<Integer> cocos = new LinkedList<Integer>(); // [22, 44, 55, 66]
     private int ataqueImpar;
     private int ataquePar;
+    private int cocosImpares;
+    private int cocosPares;
 
-    public Macaco(int ataqueImpar, int ataquePar, List<Integer> listaCocosMacaco) {
+    public Macaco(int ataqueImpar, int ataquePar,int cocosImpares, int cocosPares ) {
         this.ataqueImpar = ataqueImpar;
         this.ataquePar = ataquePar;
-        this.cocos = listaCocosMacaco;
+        this.cocosImpares = cocosImpares;
+        this.cocosPares = cocosPares;
     }
 
-    public void arremessaCoco(LinkedList<Macaco> listaDeMacacos) {
-        if (cocos.size() != 0) {
-
-            if (cocos.get(0) % 2 == 0) {
-                listaDeMacacos.get(ataquePar).adicionaCoco(cocos.get(0));
-                cocos.remove(0);
-            } else if (cocos.get(0) % 2 != 0) {
-                listaDeMacacos.get(ataqueImpar).adicionaCoco(cocos.get(0));
-                cocos.remove(0);
-            }
-        }
+    public void setCocosImpares(int cocosImpares) {
+        this.cocosImpares += cocosImpares;
     }
 
-    public void adicionaCoco(int coco) {
-        cocos.add(coco);
-    };
+    public void setCocosPares(int cocosPares) {
+        this.cocosPares += cocosPares;
+    }
+
+    public int quantidadeCocosTotais() {
+        int total = this.cocosImpares + this.cocosPares;
+        return total;
+    }
+    
+    public void arremessaCoco(LinkedList<Macaco> listaMacacos) {
+        listaMacacos.get(ataqueImpar).setCocosImpares(cocosImpares);
+        listaMacacos.get(ataquePar).setCocosPares(cocosPares);
+        this.cocosImpares = 0;
+        this.cocosPares = 0;
+    }
 }

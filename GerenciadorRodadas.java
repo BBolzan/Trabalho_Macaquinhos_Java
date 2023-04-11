@@ -10,15 +10,16 @@ public class GerenciadorRodadas {
         }
     }
 
-    public int macacoGanhador(LinkedList<Macaco> listaMacacos) {
+    
+    public String macacoGanhador(LinkedList<Macaco> listaMacacos) {
         Macaco aux = listaMacacos.get(0);
         int indexGanhador = 0;
         for (int i = 0; i < listaMacacos.size(); i++) {
-            if (listaMacacos.get(i).cocos.size() > aux.cocos.size()) {
+            if (listaMacacos.get(i).quantidadeCocosTotais() > aux.quantidadeCocosTotais()){
                 aux = listaMacacos.get(i);
                 indexGanhador = i;
             }
         }
-        return indexGanhador;
+        return "O macaco ganhador é: " + indexGanhador + " com a quantidade " + listaMacacos.get(indexGanhador).quantidadeCocosTotais() + " de Cocos";
     }
 }

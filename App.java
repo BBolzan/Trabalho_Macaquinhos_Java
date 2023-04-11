@@ -18,19 +18,22 @@ public class App {
             while (sc.hasNextLine()) {
                 String testeParse = sc.nextLine();
                 String[] testeResult = testeParse.split(" ");
-                List<Integer> listaCocosMacaco = new LinkedList<Integer>();
+                int cocosImpares = 0;
+                int cocosPares = 0;
                 
                 for (int i = 11; i < testeResult.length; i++) {
-                    listaCocosMacaco.add(Integer.parseInt(testeResult[i]));
+                    if(Integer.parseInt(testeResult[i]) % 2 == 0) {
+                        cocosPares++;
+                    } else {
+                        cocosImpares++;
+                    }
                 }
-                listaMacacos.add(new Macaco(Integer.parseInt(testeResult[4]), Integer.parseInt(testeResult[7]),
-                listaCocosMacaco));
+                listaMacacos.add(new Macaco(Integer.parseInt(testeResult[4]), Integer.parseInt(testeResult[7]),cocosImpares, cocosPares));
             }
             gRodadas.gerenciadorDeRodadas(rodadas, listaMacacos);
             long endTime = System.nanoTime();
             long fileTime = endTime - startTime;
-            System.out.println(
-                    "Mamaco que tem mais cocos é o macaco de numero: " + gRodadas.macacoGanhador(listaMacacos));
+            System.out.println(gRodadas.macacoGanhador(listaMacacos));
             System.out.println("===================================================");
             System.out.println("Tempo decorrido para executar o jogo: " + convertLongToTime(fileTime));
         }
